@@ -2,14 +2,57 @@
     "name": "hutchh/sms-notification",
     "description": "SMS Notification",
     "type": "library",
+    "version": "1.0.0",
     "require": {
-        "twilio/sdk": "8.2"
+        "php": "^7.2 || ^8.3",
+        "illuminate/http": "^8.0 || ^9.0 || ^10.0 || ^11.0",
+        "illuminate/support": "^8.0 || ^9.0 || ^10.0 || ^11.0",
+        "nesbot/carbon": "^2.67",
+        "symfony/console": "^5.0",
+        "twilio/sdk": "^8.2"
     },
     "license": "mit",
     "autoload": {
         "psr-4": {
             "Hutchh\\SmsNotification\\": "src/"
-        }
+        },
+        "classmap": ["src/"]
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Hutchh",
+            "email": "satnam.hutchh@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "homepage":"https://www.hutchh.com.au",
+    "support": {
+        "email": "support@example.org",
+        "irc": "irc://irc.freenode.org/composer"
+    },
+    "funding": [
+        {
+            "type": "patreon",
+            "url": "https://www.patreon.com/phpdoctrine"
+        },
+        {
+            "type": "tidelift",
+            "url": "https://tidelift.com/subscription/pkg/packagist-doctrine_doctrine-bundle"
+        },
+        {
+            "type": "other",
+            "url": "https://www.doctrine-project.org/sponsorship.html"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hutchh\\SmsNotification\\Providers\\SmsNotificationServiceProvider"
+            ],
+            "aliases": {
+                "Debugbar": "Hutchh\\SmsNotification\\Facades\\ManagerFacade"
+            }
+        }
+    }
 }
