@@ -1,5 +1,5 @@
 <?php
 namespace Hutchh\SmsNotification\Helper;
 interface ClientInterface{
-    function sendTextSms(string $phoneNumber, string $message);
+    function sendSms(string $phoneNumber, string $message);
 }

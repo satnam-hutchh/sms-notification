@@ -13,6 +13,7 @@ class TwilioClient implements ClientInterface{
     public function __construct($config){
         $this->client = new Client($config['auth_id'], $config['auth_token']);
         $this->setServiceId($config['service_id']);
+        $this->setSenderNumber($config['sender_no']);
     }
 
     public function setServiceId(string $serviceId){
@@ -23,7 +24,7 @@ class TwilioClient implements ClientInterface{
         $this->twilioPurchasedNumber = $phoneNumber;
     }
 
-    public function sendMesasge(string $phoneNumber, string $message){
+    public function sendSms(string $phoneNumber, string $message){
         try{
             Log::info("$phoneNumber => $message");
             $message = $this->client->messages->create(
@@ -38,8 +39,8 @@ class TwilioClient implements ClientInterface{
         }
     }
 
-    public function makeOtpVoiceCall(string $phoneNumber, string $otpCode){
-        $twimlUrl = "https://e5bc-3-105-50-231.ngrok-free.app/api/generate/otpMesage/" .$otpCode;
+    public function voiceSms(string $phoneNumber, string $otpCode){
+        $twimlUrl = "https://e474-2406-2d40-4698-eb00-00-92d.ngrok-free.app/api/generate/otpMesage/" .$otpCode;
         // $twimlUrl = env('APP_URL') . ":8003/api/generate/otpMesage/" .$otpCode;
         Log::info($twimlUrl);
         // $twimlUrl = 'https://demo.twilio.com/docs/voice.xml';
@@ -76,7 +77,7 @@ class TwilioClient implements ClientInterface{
      * @param $otpCode
      * @return VoiceResponse
      */
-    public function generateVoiceMessage($otpCode)
+    public function voiceMessage($otpCode)
     {
         /**
          * We add spaces between each digit in the otpCode so Twilio pronounces each number instead of pronouncing the whole word.
